@@ -8,13 +8,13 @@ class Library():
         
 
 
-def list_books(self):
+    def list_books(self):
         self.file.seek(0)  # dosyanın basına don
         books = self.file.readlines()
         if not books:
-            print("Kütüphane de kitap bulunmuyor.")
+             print("Kütüphane de kitap bulunmuyor.")
         else:
             print("Kütüphanede ki kitaplar:")
             for book in books:
                 book_info = book.strip().split(",")
-                print(f"Title: {book_info[0]}, Author: {book_info[1]}")
+                print(f"Title: {book_info[0]}, Author: {book_info[1]}") 
