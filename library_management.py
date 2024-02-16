@@ -1,16 +1,16 @@
 class Library():
     def __init__(self):
-        self.file = open("books.txt","a+") #dosyayı acıyorum yoksa olusturuyorum.
+        self.filename = open("books.txt","a+") #dosyayı acıyorum yoksa olusturuyorum.
 
 
     def __del__(self):
-        self.file.close()  #kutuphane nesnesi silinince dosyayı kapatıyorum.
+        self.filename.close()  #kutuphane nesnesi silinince dosyayı kapatıyorum.
         
 
 
     def list_books(self):
-        self.file.seek(0)  # dosyanın basına don
-        books = self.file.readlines()
+        self.filename.seek(0)  # dosyanın basına don
+        books = self.filename.readlines()
         if not books:
              print("Kütüphane de kitap bulunmuyor.")
         else:
