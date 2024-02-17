@@ -10,7 +10,7 @@ class Library():
 
     def list_books(self):
         self.filename.seek(0)  # dosyanın basına don
-        books = self.filename.readlines()
+        books = self.file.readlines()
         if not books:
              print("Kütüphane de kitap bulunmuyor.")
         else:
@@ -29,6 +29,54 @@ class Library():
         self.filename.writelines(book_info)
         print("Kütüphaneye kitap eklenmiştir.")
 
-lib = Library()
+    def remove_books(self):
+        title = input("Enter the title of the book you want to remove: ")
+        self.file.seek(0)  # sıfırlıyor
+        books = self.file.readlines()
+        found = False
+        for i, book in enumerate(books):
+            if title in book:
+                del books[i]
+                found = True
+                break
+        if found:
+            self.file.seek(0)
+            self.file.truncate()  #dosyanın icini siliyor
+            self.file.writelines(books)  #güncellenmis kitap listesini dosyaya yazar
+            print(f"The book '{title}' has been removed from the library.")
+        else:
+            print(f"The book '{title}' is not found in the library.")
 
-lib.add_books()
+
+#lib = Library()
+
+#lib.add_books()
+#lib.remove_books()
+
+    def menu_göster(self):
+        print("\nKütüphane Yönetim Sistemine Hoşgeldiniz!")
+        print("1. Kitapları Listele")
+        print("2. Kitap Ekle")
+        print("3. Kitap Sil")
+        print("Q Çıkış")
+
+#Library = Library("books.txt")
+#Library.add_books()
+#Library.remove_books()
+#Library.ana_menu_göster()
+#Library.list_books()
+
+while True:
+    menu_göster()
+    choise = input("Yapmak istediğiniz işlemi seçiniz: ")
+
+    if choise == "1":
+        list_books()
+    elif choise == "2":
+        add_books()
+    elif choise == "3":
+        remove_books()
+    elif choise == "Q":
+        break
+    else:
+        print("Geçersiz seçim. Lütfen geçerli bir seçenek giriniz.")
