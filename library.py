@@ -2,11 +2,8 @@ class Library():
     def __init__(self):
         self.filename = open("books.txt",mode='a+',encoding='utf-8') #dosyayı acıyorum yoksa olusturuyorum.
 
-
     def __del__(self):
         self.filename.close()  #kutuphane nesnesi silinince dosyayı kapatıyorum.
-        
-
 
     def list_books(self):
         self.filename.seek(0)  # dosyanın basına don
@@ -18,7 +15,6 @@ class Library():
             for book in self.books:
                 book_info = book.strip().split(",")
                 print(f"{book_info[0]}, {book_info[1]}, {book_info[2]}, {book_info[3]}") 
-
 
     def add_books(self):
         title = input("Enter book title:")
@@ -49,35 +45,34 @@ class Library():
             print(f"The book '{title}' is not found in the library.")
 
 
-
 def main():
     lib = Library()
 
-    print("\nKütüphane Yönetim Sistemine Hoşgeldiniz!")
-    print("1. Kitapları Listele")
-    print("2. Kitap Ekle")
-    print("3. Kitap Sil")
-    print("Q Çıkış")
-    
-    
-    #while True:
+    print(
+        """
+        Kütüphane Yönetim Sistemine Hoşgeldiniz!
+        1. Kitapları Listele
+        2. Kitap Ekle
+        3. Kitap Sil
+        Q Çıkış
+        """
+          )
+          
 
-
-    choise = input("Yapmak istediğiniz işlemi seçiniz: ")
+    choice = input("Yapmak istediğiniz işlemi seçiniz: ")
     print("----------------")
 
-    if choise == "1":
+    if choice == "1":
         lib.list_books()
-    elif choise == "2":
+    elif choice == "2":
         lib.add_books()
-    elif choise == "3":
+    elif choice == "3":
         lib.remove_books()
-    elif choise == "Q":
+    elif choice == "Q":
         exit()
     else:
         print("Geçersiz seçim. Lütfen geçerli bir seçenek giriniz.")
-
-
+        
 
 if __name__ == "__main__":
     main()
